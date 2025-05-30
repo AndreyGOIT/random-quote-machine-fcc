@@ -1,12 +1,61 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 
+const quotes = [
+  {
+    content:
+      "The only limit to our realization of tomorrow is our doubts of today.",
+    author: "Franklin D. Roosevelt",
+  },
+  {
+    content: "Life is really simple, but we insist on making it complicated.",
+    author: "Confucius",
+  },
+  {
+    content: "Do what you can, with what you have, where you are.",
+    author: "Theodore Roosevelt",
+  },
+  {
+    content: "Life is what happens when you're busy making other plans.",
+    author: "John Lennon",
+  },
+  {
+    content: "The best way to predict the future is to create it.",
+    author: "Peter Drucker",
+  },
+];
+
 function App() {
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const fetchQuote = async () => {
+    try {
+      // Выбор случайной
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      const { content, author } = random;
+      setQuote(content);
+      setAuthor(author);
+    } catch (error) {
+      setQuote("Failed to fetch quote.");
+      setAuthor("");
+    }
+  };
+
+  useEffect(() => {
+    fetchQuote();
+  }, []);
+  const getRandomQuote = () => {
+    fetchQuote();
+  };
+
   return (
     <div id="quote-box" className="App">
-      <p id="text">Here will be a text of quote</p>
-      <p id="author">Here will be an author</p>
-      <button id="new-quote">New quote</button>
+      <p id="text">{quote}</p>
+      <p id="author">- {author}</p>
+      <button id="new-quote" onClick={getRandomQuote}>
+        New quote
+      </button>
       <a id="tweet-quote" href="https://twitter.com/intent/tweet">
         <i></i>
       </a>
