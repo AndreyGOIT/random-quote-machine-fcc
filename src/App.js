@@ -45,20 +45,38 @@ function App() {
   useEffect(() => {
     fetchQuote();
   }, []);
+
   const getRandomQuote = () => {
     fetchQuote();
   };
 
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+    `"${quote}" - ${author}`
+  )}`;
+
   return (
     <div id="quote-box" className="App">
-      <p id="text">{quote}</p>
+      <p id="text">"{quote}"</p>
       <p id="author">- {author}</p>
-      <button id="new-quote" onClick={getRandomQuote}>
-        New quote
-      </button>
-      <a id="tweet-quote" href="https://twitter.com/intent/tweet">
-        <i></i>
-      </a>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          marginTop: 20,
+        }}
+      >
+        <a
+          id="tweet-quote"
+          href={tweetUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i>T</i>
+        </a>
+        <button id="new-quote" onClick={getRandomQuote}>
+          New quote
+        </button>
+      </div>
     </div>
   );
 }
