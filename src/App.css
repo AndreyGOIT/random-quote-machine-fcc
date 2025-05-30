@@ -23,3 +23,19 @@
   font-weight: bold;
   text-align: right;
 }
+
+.twitter-button {
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+#new-quote {
+  background-color: #fff;
+  color: #4d1c1c;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}

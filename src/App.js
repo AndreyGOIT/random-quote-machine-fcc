@@ -70,11 +70,12 @@ function App() {
           href={tweetUrl}
           target="_blank"
           rel="noopener noreferrer"
+          className="twitter-button"
         >
-          <i>T</i>
+          <i className="fab fa-twitter"></i> Tweet
         </a>
         <button id="new-quote" onClick={getRandomQuote}>
-          New quote
+          NEW QUOTE
         </button>
       </div>
     </div>
